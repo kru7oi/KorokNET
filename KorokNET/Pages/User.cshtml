@@ -1,0 +1,51 @@
+﻿@page
+@model KorokNET.Pages.UserModel
+
+@{
+    ViewData["Title"] = "User";
+}
+
+<h1>Список заявок</h1>
+
+<a asp-page="./CreateOrder">Создать заявку</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].DateOfStudy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].OrderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].PaymentMethod)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Order) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfStudy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethod.Name)
+            </td>
+            <td>
+                <a asp-page="./Review" asp-route-id="@item.Id">Оставить отзыв</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
