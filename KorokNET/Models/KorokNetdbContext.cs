@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 
 namespace KorokNET.Models;
 
@@ -33,10 +33,10 @@ public partial class KorokNetdbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=KorokNETDb;Trusted_Connection=true;TrustServerCertificate=true;");
+        optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS01;Database=KorokNET;Trusted_Connection=true;TrustServerCertificate=true;");
 
         optionsBuilder.UseLazyLoadingProxies();
-    } 
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

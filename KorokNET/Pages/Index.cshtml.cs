@@ -11,7 +11,6 @@ namespace KorokNET.Pages
 
         [BindProperty]
         public User User { get; set; } = default!;
-
         public IndexModel(KorokNetdbContext context)
         {
             _context = context;
@@ -32,6 +31,8 @@ namespace KorokNET.Pages
             {
                 return RedirectToPage("./User", currentUser);
             }
+
+            ModelState.AddModelError(string.Empty, "Пользователь не найден");
 
             return Page();
         }
