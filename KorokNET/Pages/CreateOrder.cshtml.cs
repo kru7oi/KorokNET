@@ -18,6 +18,8 @@ namespace KorokNET.Pages
             _context = context;
         }
 
+        public User User { get; set; } = default!;
+
         public IActionResult OnGet()
         {
             ViewData["CourseId"] = new SelectList(_context.Courses, "Id", "Name");
@@ -32,15 +34,10 @@ namespace KorokNET.Pages
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             _context.Orders.Add(Order);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./User", User);
         }
     }
 }

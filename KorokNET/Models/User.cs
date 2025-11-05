@@ -10,24 +10,41 @@ public partial class User
     public int Id { get; set; }
 
     [Display(Name = "Имя")]
+    [RegularExpression(@"^[А-Яа-яЁё ]+$", ErrorMessage = "Поле может содержать только символы кириллицы и пробелы")]
     public string Firstname { get; set; } = null!;
 
     [Display(Name = "Фамилия")]
+    [RegularExpression(@"^[А-Яа-яЁё ]+$", ErrorMessage = "Поле может содержать только символы кириллицы и пробелы")]
     public string Lastname { get; set; } = null!;
 
     [Display(Name = "Отчество")]
+    [RegularExpression(@"^[А-Яа-яЁё ]+$", ErrorMessage = "Поле может содержать только символы кириллицы и пробелы")]
     public string Secondname { get; set; } = null!;
 
+    public string Fullname
+    {
+        get
+        {
+            return $"{Lastname} {Firstname} {Secondname}";
+        }
+    }
+
     [Display(Name = "Логин")]
+    [StringLength(32, MinimumLength = 6, ErrorMessage = "Минимальное значение 6 символов")]
+    [RegularExpression(@"^[A-Za-z0-9]+$", ErrorMessage = "Поле может содержать только символы латиницы и цифры")]
     public string Login { get; set; } = null!;
 
     [Display(Name = "Пароль")]
+    [MinLength(8, ErrorMessage = "Минимальное значение 8 символов")]
     public string Password { get; set; } = null!;
 
+    // 8(xxx)xxx-xx-xx
     [Display(Name = "Телефон")]
+    [RegularExpression(@"^8\(\d{3}\)\d{3}-\d{2}-\d{2}$", ErrorMessage = "Номер телефона должен быть в формате: 8(xxx)xxx-xx-xx")]
     public string Phone { get; set; } = null!;
 
     [Display(Name = "Почта")]
+    [EmailAddress(ErrorMessage = "Некорректный формат электронной почты")]
     public string Email { get; set; } = null!;
 
     [Display(Name = "Идентификатор роли")]

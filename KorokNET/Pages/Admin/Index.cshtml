@@ -1,0 +1,70 @@
+﻿@page
+@model KorokNET.Pages.Admin.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список заявок</h1>
+
+<form method="get">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label class="control-label">Статус заявки: </label>
+        <select asp-for="OrderStatusId" class="form-control">
+            <option>Все статусы заявки</option>
+            @foreach (var orderStatus in Model.OrderStatus)
+            {
+                <option value="@orderStatus.Id">@orderStatus.Name</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary">Фильтр</button>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].DateOfStudy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].OrderStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].PaymentMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Order) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfStudy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderStatus.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethod.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Fullname)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Редактировать</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

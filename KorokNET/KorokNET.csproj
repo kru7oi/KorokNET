@@ -21,4 +21,25 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\img\image01.webp" />
+    <None Include="wwwroot\img\image02.jpg" />
+    <None Include="wwwroot\img\image03.png" />
+    <None Include="wwwroot\img\image04.jpg" />
+    <None Include="wwwroot\img\image05.jpg" />
+    <None Include="wwwroot\img\image06.jpg" />
+    <None Include="wwwroot\img\image07.jpg" />
+    <None Include="wwwroot\img\image08.webp" />
+    <None Include="wwwroot\img\image09.webp" />
+    <None Include="wwwroot\img\image10.webp" />
+    <None Include="wwwroot\img\image11.jpg" />
+    <None Include="wwwroot\img\image12.webp" />
+    <None Include="wwwroot\img\image13.webp" />
+    <None Include="wwwroot\img\image14.png" />
+    <None Include="wwwroot\img\image15.jpg" />
+    <None Include="wwwroot\img\image16.jpg" />
+    <None Include="wwwroot\img\image17.jpeg" />
+    <None Include="wwwroot\img\image18.webp" />
+  </ItemGroup>
+
 </Project>

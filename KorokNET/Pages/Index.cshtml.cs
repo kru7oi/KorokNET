@@ -30,10 +30,21 @@ namespace KorokNET.Pages
 
             if (currentUser != null)
             {
-                return RedirectToPage("./User", currentUser);
+                if (currentUser.RoleId == 1)
+                {
+                    return RedirectToPage("./User", currentUser);
+                }
+                else
+                {
+                    return RedirectToPage("./Admin/Index");
+                }
             }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "Пользователь не найден. Проверьте правильность данных");
 
-            return Page();
+                return Page();
+            }
         }
     }
 }

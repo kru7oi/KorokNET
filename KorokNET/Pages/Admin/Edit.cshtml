@@ -1,0 +1,57 @@
+﻿@page
+@model KorokNET.Pages.Admin.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редактирование заявки</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Order.Id" />
+            <div class="form-group">
+                <label asp-for="Order.Course" class="control-label"></label>
+                <select asp-for="Order.CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+                <span asp-validation-for="Order.CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Order.DateOfStudy" class="control-label"></label>
+                <input asp-for="Order.DateOfStudy" class="form-control" />
+                <span asp-validation-for="Order.DateOfStudy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Order.PaymentMethod" class="control-label"></label>
+                <select asp-for="Order.PaymentMethodId" class="form-control" asp-items="ViewBag.PaymentMethodId"></select>
+                <span asp-validation-for="Order.PaymentMethodId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Order.OrderStatus" class="control-label"></label>
+                <select asp-for="Order.OrderStatusId" class="form-control" asp-items="ViewBag.OrderStatusId"></select>
+                <span asp-validation-for="Order.OrderStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                <label asp-for="Order.User" class="control-label"></label>
+                <select asp-for="Order.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="Order.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
